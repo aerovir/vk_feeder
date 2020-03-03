@@ -4,9 +4,14 @@ use \Curl\Curl;
 
 $curl = new Curl();
 
-$curl -> download('https://www.ferra.ru/exports/rss.xml', 'data.xml');
 
-$str = file_get_contents("data.xml");
+$rssArray = [
+    'https://www.ferra.ru/exports/rss.xml',
+    'https://3dnews.ru/news/rss/',
+    'https://mobiltelefon.ru/yrss2.php',
+    'https://helpix.ru/news/shtml/rss.xml'
+];
+
 $xml = simplexml_load_file("https://www.ferra.ru/exports/rss.xml");
 
 
