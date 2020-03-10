@@ -1,6 +1,6 @@
 version: '3.7'
 services: 
-    app:
+    vk-feeder:
         build: 
             context: ./..
             dockerfile: docker/php/Dockerfile
@@ -22,5 +22,35 @@ services:
         volumes: 
             - ../app:/app
 
+    db:
+        build: 
+            context: ./..
+            dockerfile: docker/db/Dockerfile
+        restart: always
+        ports: 
+            - 5432:5432
+        volumes:
+            - db-volume:/var/lib/postgresql/data
+            - ./docker/db:/docker-entrypoint-initdb.d
+        networks: 
+            - vk_feeder
+        environment:
+            POSTGRES_USER: develop_user
+            POSTGRES_PASSWORD: develop_password
+
+
+    adminer:
+        build:
+            context: ./..
+            dockerfile: docker/adminer/Dockerfile
+        restart: always
+        ports:
+            - 9000:8080
+        networks: 
+            - vk_feeder
+
 networks: 
-    vk_feeder:           
+    vk_feeder:
+
+volumes: 
+    db-volume:
