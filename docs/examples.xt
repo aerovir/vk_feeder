@@ -1,14 +1,19 @@
-https://oauth.vk.com/blank.html#access_token=db1f0f3c2b4d6a8dd9f9cb838dfd19542c06e8eb038f8caa1bc7312fc09dc11a440bcf4216309885e260b&expires_in=0&user_id=5305539
+Тип impact_flow
 
+##get auth_code
+https://oauth.vk.com/blank.html#access_token=79473abd5318782c21074d1c9d1f280fdaec50d7762f71d68a42f1354c1c6435fa57264f6183d48140067&expires_in=0&user_id=5305539&state=123456
 
-https://api.vk.com/method/wall.post?owner_id=-134696799&attachments=https://www.ferra.ru/news/techlife/amerikancy-pokazali-naibolee-detalnoe-izobrazhenie-noveishego-giperzvukovogo-oruzhiya-ssha-02-03-2020.htm&access_token=41ef1205d99cb363d6abcb8fc9a88c70ec531d323f2bd5ff2fd216f4de0b445b51dfbfe680ddfd31ac4f1
+##auth_code
+code=8137ba2446490cb20f
 
+code=789c1a4e5599c53122
 
-https://api.vk.com/method/wall.post?\
-    owner_id=-34696799&\
-    attachments=https://www.ferra.ru/news/techlife/amerikancy-pokazali-naibolee-detalnoe-izobrazhenie-noveishego-giperzvukovogo-oruzhiya-ssha-02-03-2020.htm&\
-    access_token=db1f0f3c2b4d6a8dd9f9cb838dfd19542c06e8eb038f8caa1bc7312fc09dc11a440bcf4216309885e260b&\
-    signed=1&\
-    publish_date=&\
-    close_comments=0&\
-    v=5.103
+## key of group
+1a41973fd52fc81856a8ffba3fa224d026cc955918d452bdf90eaefd314d96c75345d18dae7e08328ffd3
+
+##Access token
+{"expires_in":0,"access_token_34696799":"fb2f3084fc1d37686105bb8acb381783b5b5cfaea570c6debc85cbca92b154c821806e4c51269baedffa9"}
+
+{"access_token":"196fe37259f3c074cc6c46f2e2cedf8b4bcc24031606f39e3ed68e0545157d738fc63f8664bbd8a142156","expires_in":0,"user_id":5305539}
+
+{"access_token":"f0415722bf26249ac9e57f168c736ba7feb809513b418e529868a3363d8dba55c22c6c439d18afd1bec81","expires_in":86333,"user_id":5305539}
