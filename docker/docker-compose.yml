@@ -27,16 +27,12 @@ services:
             context: ./..
             dockerfile: docker/db/Dockerfile
         restart: always
-        ports: 
-            - 5432:5432
-        volumes:
-            - db-volume:/var/lib/postgresql/data
-            - ./docker/db:/docker-entrypoint-initdb.d
         networks: 
             - vk_feeder
         environment:
-            POSTGRES_USER: develop_user
-            POSTGRES_PASSWORD: develop_password
+            POSTGRES_USER: ${POSTGRES_USER}
+            POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+            POSTGRES_DB: ${POSTGRES_DB}
 
 
     adminer:

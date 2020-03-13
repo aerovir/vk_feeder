@@ -1,1 +1,7 @@
-FROM postgres:10.3-alpine
+FROM postgres:latest
+
+ENV POSTGRES_USER docker
+ENV POSTGRES_PASSWORD docker
+ENV POSTGRES_DB docker
+
+COPY docker/db/entrypoint/init.sql /docker-entrypoint-initdb.d/
