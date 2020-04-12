@@ -1,6 +1,0 @@
-{
-    "require": {
-        "php-curl-class/php-curl-class": "^8.6",
-        "vkcom/vk-php-sdk": "^5.101"
-    }
-}

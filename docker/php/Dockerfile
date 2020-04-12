@@ -60,4 +60,5 @@ RUN pecl install xdebug-2.9.2 \
     
 WORKDIR /app
 
-RUN composer require php-curl-class/php-curl-class && composer install
+RUN composer require php-curl-class/php-curl-class
+RUN composer install

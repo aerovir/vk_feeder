@@ -1,43 +1,68 @@
 <?php
 
-$rssArray = [
-    'https://www.ferra.ru/exports/rss.xml',
-    'https://3dnews.ru/news/rss/',
-    'https://mobiltelefon.ru/yrss2.php',
-    'https://helpix.ru/news/shtml/rss.xml'
-];
-$count = 0;
-$allLinksArray = [];
-$resLinksArray = [];
+// $connection = pg_connect("host=db dbname=db user=develop_user password=develop_password");
+
 $time = time();
+
+$user = 'develop_user';
+$pass = 'develop_password';
 
 $group_id = "-34696799";
 $token = "6721464779df7d7f14b3894384534dc174b28fb3e5944d1c2db3c408c87a71a23f4684ec869f6d8b36290";//вместо этого тут ваш токен
 $api_ver = "5.103";
 $url = 'https://api.vk.com/method/wall.post?';
-for($i = 0; $i < count($rssArray); $i++){
-    $xmlAll = simplexml_load_file($rssArray[$i]);
-    foreach($xmlAll->channel->item as $item){
-        $ch = curl_init();
-        curl_setopt_array( $ch, array(
-            CURLOPT_POST    => TRUE,
-            CURLOPT_RETURNTRANSFER => TRUE,
-            CURLOPT_SSL_VERIFYPEER => FALSE,
-            CURLOPT_SSL_VERIFYHOST => FALSE,
-            CURLOPT_POSTFIELDS     => array(
-            "owner_id" => $group_id,
-            "from_group" => 1,
-            "attachment" => $item->link,
-            "publish_date" => $time+$count,
-            "access_token" => $token,
-            "v" => $api_ver
-        ),
-            CURLOPT_URL => $url,
-        ));
-        $query = curl_exec($ch);
-        echo $query;
-        curl_close($ch);
-        $count += 600;
-        sleep(1);
-    }
-}
+
+// $countOfRowsFeeds = "SELECT COUNT(*) FROM vk_feeder WHERE is_published=false";
+// $countOfRowsFeeders = "SELECT COUNT(*) FROM source_feed";
+
+$conn = new PDO('pgsql:host=db;dbname=db', $user, $pass);
+
+$counter1 = $conn->prepare("SELECT COUNT(*) FROM vk_feeder WHERE is_published=false");
+$counter2 = $conn->prepare("SELECT COUNT(*) FROM source_feed");
+$counter3 = $conn->prepare("SELECT url FROM vk_feeder WHERE is_published=false AND source_id=$i LIMIT 1");
+$counter1->execute();
+// $counter2->execute();
+$countOfRowsFeeds = $counter2->execute()->fetchColumn();
+$countOfRowsFeeders = $counter1->fetchColumn();
+$publishUrl = $counter3->fetch();
+
+echo $countOfRowsFeeds;
+
+// for($i = 0; $i < $counter1->execute(); $i++){
+//     // for($i = 1; $i < $countOfRowsFeeders + 1; $i++){
+//     //     $counter3 = $conn->prepare("SELECT url FROM vk_feeder WHERE is_published=false AND source_id=$i LIMIT 1");
+//     //     $publishUrl = $counter3->fetch();
+//     //     echo $publishUrl[0]."<br/>";
+//     //     $conn->exec("UPDATE vk_feeder SET is_published=true WHERE url='$publishUrl[0]'");
+        
+//     // }
+//     // sleep(1);
+//     echo $i;
+// }
+
+// for($i = 0; $i < count($rssArray); $i++){
+//     $xmlAll = simplexml_load_file($rssArray[$i]);
+//     foreach($xmlAll->channel->item as $item){
+//         $ch = curl_init();
+//         curl_setopt_array( $ch, array(
+//             CURLOPT_POST    => TRUE,
+//             CURLOPT_RETURNTRANSFER => TRUE,
+//             CURLOPT_SSL_VERIFYPEER => FALSE,
+//             CURLOPT_SSL_VERIFYHOST => FALSE,
+//             CURLOPT_POSTFIELDS     => array(
+//             "owner_id" => $group_id,
+//             "from_group" => 1,
+//             "attachment" => $item->link,
+//             "publish_date" => $time+$count,
+//             "access_token" => $token,
+//             "v" => $api_ver
+//         ),
+//             CURLOPT_URL => $url,
+//         ));
+//         $query = curl_exec($ch);
+//         echo $query;
+//         curl_close($ch);
+//         $count += 600;
+//         sleep(1);
+//     }
+// }
