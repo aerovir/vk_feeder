@@ -7,9 +7,9 @@ $time = time();
 $user = 'develop_user';
 $pass = 'develop_password';
 
-$group_id = "-34696799";
-$token = "6721464779df7d7f14b3894384534dc174b28fb3e5944d1c2db3c408c87a71a23f4684ec869f6d8b36290";//вместо этого тут ваш токен
-$api_ver = "5.103";
+$group_id = "";
+$token = "";//вместо этого тут ваш токен
+$api_ver = "";
 $url = 'https://api.vk.com/method/wall.post?';
 
 // $countOfRowsFeeds = "SELECT COUNT(*) FROM vk_feeder WHERE is_published=false";
