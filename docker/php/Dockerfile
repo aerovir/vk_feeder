@@ -41,11 +41,11 @@ RUN apt-get update \
     && rm -r /var/lib/apt/lists/*
 
 ENV COMPOSER_ALLOW_SUPERUSER 0
-ENV COMPOSER_VERSION 1.9.3
+ENV COMPOSER_VERSION 2.0.2
 ENV COMPOSER_HOME /tmp
 RUN php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');" \
     && php -r " \
-        if (hash_file('sha384', 'composer-setup.php') === 'e0012edf3e80b6978849f5eff0d4b4e4c79ff1609dd1e613307e16318854d24ae64f26d17af3ef0bf7cfb710ca74755a') { \
+        if (hash_file('sha384', 'composer-setup.php') === 'c31c1e292ad7be5f49291169c0ac8f683499edddcfd4e42232982d0fd193004208a58ff6f353fde0012d35fdd72bc394') { \
             echo 'Installer verified' . PHP_EOL; \
         } else { \
             echo 'Installer corrupt' . PHP_EOL; \

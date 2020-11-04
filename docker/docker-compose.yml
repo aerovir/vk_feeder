@@ -9,18 +9,6 @@ services:
             - ../app:/app
         networks: 
             - vk_feeder
-    
-    nginx:
-        build: 
-            context: ./..
-            dockerfile: docker/nginx/Dockerfile
-        restart: always
-        ports: 
-            - '6001:8080'
-        networks: 
-            - vk_feeder
-        volumes: 
-            - ../app:/app
 
     db:
         build: 
