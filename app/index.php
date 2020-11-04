@@ -7,8 +7,8 @@ $time = time();
 $user = 'develop_user';
 $pass = 'develop_password';
 
-$group_id = "-34696799";
-$token = "db1a23b4f3bb271ed8dab0fd7b6d9dd964d3cd6784693cf00021c1cfbda9c8aff5071eaa1bb71a7cb2fff";//вместо этого тут ваш токен
+$group_id = "";
+$token = "";//вместо этого тут ваш токен
 $api_ver = "5.70";
 $url = 'https://api.vk.com/method/wall.post?';
 
